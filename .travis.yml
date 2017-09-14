@@ -1,85 +1,31 @@
-# Set up notification options
-notifications: 
+notifications:
   email:
     recipients:
-      - guythomas721@gmail.com
-
-    # change is when the repo status goes from pass to fail or vice versa
+    - guythomas721@gmail.com
     on_success: change
     on_failure: always
-
-# specify language
 language: python
 python:
-  - "2.7"
-
-# specify language options
-
-# configure which branches to run
+- '2.7'
+env:
+  matrix:
+    secure: fQHJHNH/Hxslub3V954ths+JTwlztfqSacT9cYUWrDiEaOpSj2Pj3n4RY5M/83G7LDbE1Nrs0VBJ3S2KyYuvdOqXBf+TxcV8vL4kZu1GQDfoQwXc6eNYgS1DnsEZscnYbEkajmEeejiP9P74+Lla0aJ01Zul+ELoPGr/GOIlGANSZU6/MwiMiHW3a44qCZWaiptVlCRd3QhSia9RkR7BId04bO5znDq1fDYw4jN/TQt/GMfccG9dWDo78TlNcIxzXnb8P2A/hubJEP/zIf631pl5/weV97PLHnm13KuKqmWNXb9eWYenCgR8gpr4Cq3WxZvtlKtBQ4Euhf15fcmpVrifpx7LmVxxEkoP51Iyx1ydpzuNaWAlk0Wuv7mg5TsASTcKHzD84cS1/FemjOGjbHo+inm7ZmdZgDwpytZyGnL3kt17y2GXSwBZISAE6tKnUNdVtk0Jy0NrPsSPCBL2sCZXeJj6YAo2W/7ZyDy+ftLLObGZ6hlWPufC19xfEEZM1JSkdZMei4cLnkwb1h/v6dYSdcz0VW8HsjlilN3dA4oxWW3oEGA/mgnnIR8F2BEzHuo5YIF/WhKj4qAYzDQj18qGnZ0FEL5RjdbrORHEDbQcSftyWwb+W7K1OVlL4oxaY31E2IIWjfkeE43k8JOXpahfzHFr6Nu4s2aXjlSsHwc=
 branches:
-  # whitelist
   only:
-    - master
-    - /^deploy-.*$/ # regex ok
-  # blacklist
+  - master
+  - "/^deploy-.*$/"
   except:
-    - test 
-
-# declare your environment variables
-
+  - test
 sudo: required
-# enable services (stuff like DBs, MQs)
 services:
-  - docker
-
-## begin build steps
-####################
+- docker
 before_install:
-# - sudo apt-get update -qq
-  - pip install awscli
-  - docker run --rm --privileged multiarch/qemu-user-static:register
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-
+- pip install awscli
+- docker run --rm --privileged multiarch/qemu-user-static:register
+- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
 install:
-  #Push new app image to dockerhub
-  - docker build --rm=false -t stolemyusername/bluxomous:arm .
-  - docker push stolemyusername/bluxomous
-
-# before_script:
-#   - bower install
-
-# after_success:
-# - test $TRAVIS_PULL_REQUEST = false
-#   && git push
-
-before_deploy:
-# check that build passed successfully
-# add the \ afterwards to tell travis it's part of the same command thanks @markhuge
-# - test $TRAVIS_TEST_RESULT = 0 \
-#   && gulp build \
-#   && cd dist \
-#   && npm install --prod \
-#   && cd $TRAVIS_BUILD_DIR \
-#   && tar -zcvf amber-storm-$TRAVIS_BRANCH.tar.gz dist \
-#   && export PRODBUILDCOMPLETE=true
-
-
-## Deployment options
-####################
-
-deploy:
-  # specify the deployment provider
-  # provider: releases
-  # # options for provider
-  # api_key:
-  #   secure: securekeyhere
-  # file: myrepo-$TRAVIS_BRANCH.tar.gz
-  # # conditions for deployment
-  # on:
-  #   condition: $PRODBUILDCOMPLETE = true
-  #   repo: myname/myrepo
-  #   all_branches: true
-  #   tags: true
-
-after_deploy:
-  # - ssh git@mysite.biz "./deploy.sh $TRAVIS_BRANCH"
+- docker build --rm=false -t stolemyusername/bluxomous:arm .
+- docker push stolemyusername/bluxomous
+# before_deploy: 
+# deploy: 
+# after_deploy: 

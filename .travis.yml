@@ -42,17 +42,8 @@ before_install:
 
 install:
   #Push new app image to dockerhub
-  - docker build --rm=false -f ./app/Dockerfile-arm -t stolemyusername/engauge:arm ./app
-  - docker push stolemyusername/engauge
-  #Push new landing image to dockerhub
-  - docker build --rm=false -f ./landing/Dockerfile-arm -t stolemyusername/engauge-landing:arm ./landing
-  - docker push stolemyusername/engauge-landing
-  #Push new screenshot service image to dockerhub
-  # - docker build --rm=false -f ./screenshot/Dockerfile -t stolemyusername/engauge-screenshot:latest ./screenshot
-  # - docker push stolemyusername/engauge-screenshot
-  #Push new ngnix proxy
-  - docker build --rm=false -f ./nginx/Dockerfile-arm -t stolemyusername/nginx:arm ./nginx
-  - docker push stolemyusername/nginx
+  - docker build --rm=false -t stolemyusername/bluxomous:arm .
+  - docker push stolemyusername/bluxomous
 
 # before_script:
 #   - bower install

@@ -1,0 +1,13 @@
+version: '3' # specify docker-compose version
+
+# Define the services/containers to be run
+services:
+  nginx:
+    image: stolemyusername/bluxomous:arm
+    ports:
+      - "8000:80"
+      - "44300:443"
+      deploy:
+      placement:
+        constraints:
+         - node.hostname == worker

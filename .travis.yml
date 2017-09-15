@@ -21,10 +21,10 @@ services:
 - docker
 before_install:
 - pip install awscli
-- docker run --rm --privileged multiarch/qemu-user-static:register
+# - docker run --rm --privileged multiarch/qemu-user-static:register
 - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
 install:
-- docker build --rm=false -t stolemyusername/bluxomous:arm .
+- docker build --rm=false -t stolemyusername/bluxomous:latest .
 - docker push stolemyusername/bluxomous
 # before_deploy: 
 # deploy: 

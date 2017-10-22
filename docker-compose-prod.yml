@@ -5,17 +5,15 @@ services:
     image: traefik
     restart: always
     command: --docker \
-      --docker.swarmmode \
-      --docker.watch \
-      --net \
+      --net=traefik-net
+      --web \
       --loglevel=DEBUG \
-      --defaultentrypoints="https"
     ports:
       - 8000:80
       - 44300:443
-      - 9090:8080
+      - 8080:8080
     networks:
-      - net
+      - traefik-net
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/traefik.toml
@@ -31,5 +29,5 @@ services:
          constraints: 
            - node.hostname == master
 networks:
-  net:
+  traefik-net:
     external: true

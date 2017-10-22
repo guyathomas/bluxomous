@@ -18,6 +18,7 @@ defaultEntryPoints = ["https","http"]
 endpoint = "unix:///var/run/docker.sock"
 domain = "s3.bluxomous.com"
 watch = true
+swarmmode = true
 exposedbydefault = false
 
 [acme]

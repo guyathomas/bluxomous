@@ -47,3 +47,5 @@ networks:
   default:
     external:
       name: nginx-proxy
+    external:
+      name: engauge

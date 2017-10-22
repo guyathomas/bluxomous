@@ -1,19 +1,25 @@
-version: "3"
+version: '3'
 
 services:
-  loadbalancer:
+  traefik:
     image: traefik
+    restart: always
     command: --docker \
       --docker.swarmmode \
       --docker.watch \
-      --web \
-      --loglevel=DEBUG
+      --net \
+      --loglevel=DEBUG \
+      --defaultentrypoints="https"
     ports:
       - 8000:80
       - 44300:443
       - 9090:8080
+    networks:
+      - net
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.toml:/traefik.toml
+      - ./acme.json:/acme.json
     deploy:
       restart_policy:
         condition: any
@@ -24,8 +30,6 @@ services:
       placement:
          constraints: 
            - node.hostname == master
-    networks:
-      - net
 networks:
   net:
     external: true

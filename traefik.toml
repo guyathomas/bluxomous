@@ -1,0 +1,27 @@
+debug = false
+checkNewVersion = true
+logLevel = "DEBUG"
+defaultEntryPoints = ["https","http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":8000"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":44300"
+  [entryPoints.https.tls]
+
+[retry]
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "s3.bluxomous.com"
+watch = true
+exposedbydefault = false
+
+[acme]
+email = "guythomas721@gmail.com"
+storage = "acme.json"
+entryPoint = "https"
+OnHostRule = true

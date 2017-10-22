@@ -61,6 +61,8 @@ services:
 networks:
   engauge:
     external: true
+  minio-distributed:
+    external: true
   default:
     external:
       name: nginx-proxy

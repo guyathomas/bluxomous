@@ -5,9 +5,9 @@ services:
     image: traefik
     restart: always
     command: --docker \
-      --net=traefik-net
+      --net=traefik-net \
       --web \
-      --loglevel=DEBUG \
+      --loglevel=DEBUG
     ports:
       - 8000:80
       - 44300:443

@@ -59,6 +59,8 @@ services:
         constraints:
          - node.labels.arch == x86
 networks:
+  engauge:
+    external: true
   default:
     external:
       name: nginx-proxy

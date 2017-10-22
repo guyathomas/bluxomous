@@ -20,6 +20,7 @@ services:
         constraints:
          - node.labels.arch == x86
     networks:
+      - nginx-proxy
       - engauge
       - minio-distributed
   nginx-gen:
@@ -38,6 +39,8 @@ services:
       placement:
         constraints:
          - node.labels.arch == x86
+    networks:
+      - nginx-proxy
   nginx-letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
     container_name: nginx-letsencrypt
@@ -58,11 +61,12 @@ services:
       placement:
         constraints:
          - node.labels.arch == x86
+    networks:
+      - nginx-proxy
 networks:
   engauge:
     external: true
   minio-distributed:
     external: true
-  default:
-    external:
-      name: nginx-proxy
+  nginx-proxy:
+    external: true

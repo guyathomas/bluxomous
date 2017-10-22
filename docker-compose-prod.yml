@@ -19,6 +19,9 @@ services:
       placement:
         constraints:
          - node.labels.arch == x86
+    networks:
+      - engauge
+      - minio-distributed
   nginx-gen:
     image: jwilder/docker-gen
     command: -notify-sighup nginx -watch -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf -only-exposed
@@ -58,8 +61,4 @@ services:
 networks:
   default:
     external:
-      name: minio-distributed
-    external:
       name: nginx-proxy
-    external:
-      name: engauge

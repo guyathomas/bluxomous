@@ -34,7 +34,7 @@ storage = "acme.json"
 entryPoint = "https"
 [[acme.domains]]
   main = "engauge.xyz"
-  sans = ["www.engauge.xyz", "app.engauge.xyz"]
+  sans = ["app.engauge.xyz"]
 [[acme.domains]]
   main = "bluxomous.com"
-  sans = ["www.bluxomous.com", "s3.bluxomous.com"]
+  sans = ["s3.bluxomous.com"]

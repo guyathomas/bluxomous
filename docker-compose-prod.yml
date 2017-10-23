@@ -2,14 +2,11 @@ version: '3'
 
 services:
   traefik:
-    image: traefik
+    image: stolemyusername/traefik
     restart: always
-    command: --docker \
-      --web \
-      --loglevel=DEBUG
     ports:
-      - 8000:80
-      - 44300:443
+      - 80:80
+      - 443:443
       - 8080:8080
     networks:
       - traefik-net
@@ -18,6 +15,8 @@ services:
       - ./traefik.toml:/traefik.toml
       - ./acme.json:/acme.json
     deploy:
+      labels:
+        - "traefik.enable=true"
       restart_policy:
         condition: any
       mode: replicated

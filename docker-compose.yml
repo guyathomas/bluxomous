@@ -12,18 +12,6 @@ services:
       - traefik-net
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    deploy:
-      labels:
-        - "traefik.enable=true"
-      restart_policy:
-        condition: any
-      mode: replicated
-      replicas: 1
-      update_config:
-        delay: 2s
-      placement:
-         constraints: 
-           - node.role == manager
 networks:
   traefik-net:
     external: true

@@ -37,5 +37,4 @@ OnHostRule = true
   main = "engauge.xyz"
   sans = ["app.engauge.xyz"]
 [[acme.domains]]
-  main = "bluxomous.com"
-  sans = ["s3.bluxomous.com"]
+  main = "guythomas.me"

@@ -32,7 +32,11 @@ exposedbydefault = false
 email = "guythomas721@gmail.com"
 storage = "acme.json"
 entryPoint = "https"
-OnHostRule = true
+onHostRule = true
+entryPoint = "https"
+  [acme.httpChallenge]
+  entryPoint = "http"
+
 [[acme.domains]]
   main = "engauge.xyz"
   sans = ["app.engauge.xyz"]

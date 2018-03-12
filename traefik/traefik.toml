@@ -33,7 +33,6 @@ email = "guythomas721@gmail.com"
 storage = "acme.json"
 entryPoint = "https"
 onHostRule = true
-
 [[acme.domains]]
   main = "engauge.xyz"
   sans = ["app.engauge.xyz"]

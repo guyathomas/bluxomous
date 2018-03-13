@@ -35,7 +35,7 @@ entryPoint = "https"
 onHostRule = true
 [[acme.domains]]
   main = "engauge.xyz"
-  sans = ["app.engauge.xyz"]
+  sans = [ "app.engauge.xyz" ]
 [[acme.domains]]
   main = "guythomas.me"
-  sans = ["flashcards.guythomas.me"]
+  sans = [ "fc.guythomas.me", "flashcards.guythomas.me" ]

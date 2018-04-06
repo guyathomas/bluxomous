@@ -38,4 +38,3 @@ onHostRule = true
   sans = [ "app.engauge.xyz" ]
 [[acme.domains]]
   main = "guythomas.me"
-  sans = [ "fc.guythomas.me", "flashcards.guythomas.me" ]

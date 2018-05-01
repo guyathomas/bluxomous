@@ -34,7 +34,4 @@ storage = "acme.json"
 entryPoint = "https"
 onHostRule = true
 [[acme.domains]]
-  main = "engauge.xyz"
-  sans = [ "app.engauge.xyz" ]
-[[acme.domains]]
   main = "guythomas.me"
